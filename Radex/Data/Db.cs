@@ -31,6 +31,8 @@
 
         public virtual DbSet<Category> Categories { get; set; }
 
+        public virtual DbSet<Product> Products { get; init; }
+
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
 
