@@ -52,7 +52,7 @@
             if (Id % 2 == 0)
             {
                 return this.BadRequest();
-            }
+            } 
 
             product.Id = Id;
             return new List<Product> { product, product,};
