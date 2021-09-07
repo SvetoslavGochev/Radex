@@ -5,7 +5,7 @@
     using System;
 
     [Route("api/[controller]")]//opennig on name of controller
-    // open on adress /Products za vsi`ki mewtodi pytq e edin i sy6t
+    // open on adress /api/Products za vsi`ki mewtodi pytq e edin i sy6t
     [ApiController]
     public class ProductsController : ControllerBase
     {
@@ -35,9 +35,13 @@
         {
             return "Delete!";
         }
-        [HttpPost]
-        public Product SoftUni2(Product product)
+        // /api/products/12345 tova e adresa
+        [HttpPost("{id}")]
+        public Product SoftUni2(Product product, int Id)
         {
+            //ako ne6to e slojen tip se tarsi v bodito s json ako e primitiven se tarsi v queri stringa  gore https://localhost:8080/Api/Products?id=123
+            //pri [HttpPost]
+            product.Id = Id;
             return product;
         }
 
