@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Radex.Data;
     using System;
+    using System.Collections.Generic;
 
     [Route("api/[controller]")]//opennig on name of controller
     // open on adress /api/Products za vsi`ki mewtodi pytq e edin i sy6t
@@ -39,14 +40,14 @@
         // /api/products/12345 tova e adresa https://localhost:8080/Api/Products/123456
         [HttpPost("{id}")]
         //[Authorize]
-        public ActionResult<Product> SoftUni2(Product product, int Id)
+        public ActionResult<IEnumerable<Product>> SoftUni2(Product product, int Id)
         {
             //ako ne6to e slojen tip se tarsi v bodito s json ako e primitiven se tarsi v queri stringa  gore https://localhost:8080/Api/Products?id=123
             //pri [HttpPost]
-            if (User.Identity.IsAuthenticated)
-            {
+            //if (User.Identity.IsAuthenticated)
+            //{
 
-            } //dali e lognat potrtebitelq
+            //} //dali e lognat potrtebitelq
 
             if (Id % 2 == 0)
             {
@@ -54,7 +55,7 @@
             }
 
             product.Id = Id;
-            return product;
+            return new List<Product> { product, product,};
         }
 
     }
