@@ -19,11 +19,19 @@
             this.css = css;
         }
 
+        [HttpPost]
+        public async Task<ActionResult> Post(Candidate candidate)
+        {
+            await this.css.PostCandidate(candidate);
+
+            return this.CreatedAtAction("Get", new { id = candidate.Id, recruiter = candidate.Recruiter }, candidate);
+        }
+
         [HttpGet]
         public IEnumerable<Candidate> Get()
         {
             return this.css.GetAll();
-        
+
         }
 
         [HttpGet("{id}")]
@@ -38,14 +46,6 @@
 
             return candidate;
 
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Post(Candidate candidate)
-        {
-            this.css.PostCandidate(candidate);
-
-            return this.CreatedAtAction("Get", new { id = candidate.Id , recruiter =candidate.Recruiter}, candidate);
         }
 
         //[HttpPut]

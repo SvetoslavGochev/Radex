@@ -33,10 +33,10 @@
             return candidate;
         }
 
-        public async void PostCandidate(Candidate candidate)
+        public async Task PostCandidate(Candidate candidate)
         {
-            await this.db.AddAsync(candidate);
-             this.db.SaveChanges();
+            await this.db.Candidates.AddAsync(candidate);
+            await this.db.SaveChangesAsync();
         }
     }
 }

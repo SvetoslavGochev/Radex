@@ -11,7 +11,7 @@
     {
         Candidate GetCandidate(int id);
 
-        void  PostCandidate(Candidate candidate);
+         Task PostCandidate(Candidate candidate);
 
         IEnumerable<Candidate> GetAll();
 
