@@ -8,6 +8,8 @@ namespace Radex
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Radex.Data;
+    using Radex.Infrastructure.Extensions;
+    using Radex.Services.Candidate;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -28,22 +30,23 @@ namespace Radex
             services.AddControllersWithViews()
                 .AddXmlSerializerFormatters();
 
-
+            services.AddCors();// 4rez nego kazvame na brauzara koi moje da pravi zaqvki kam na6eto api
             services.AddDbContext<Db>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            
+            services.AddTransient<ICandidateServices, CandidateServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            using (IServiceScope serviceScope = app.ApplicationServices.CreateScope())
-            {
-                Db dbContext = serviceScope.ServiceProvider.GetRequiredService<Db>();
+            //using (IServiceScope serviceScope = app.ApplicationServices.CreateScope())
+            //{
+            //    Db dbContext = serviceScope.ServiceProvider.GetRequiredService<Db>();
 
-                    dbContext.Database.Migrate(); // Apply migration/seed everytime (for development purposes)
+            //        dbContext.Database.Migrate(); // Apply migration/seed everytime (for development purposes)
 
                 
-            }
+            //}
+            app.PreparateDatabase();
 
             if (env.IsDevelopment())
             {
@@ -60,6 +63,12 @@ namespace Radex
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseCors(policy =>
+            {
+                policy.WithOrigins("https://mysite.com").AllowAnyMethod().AllowAnyHeader();
+                policy.WithOrigins("https://github.com").WithMethods("POST").AllowAnyHeader();
+            });
 
             app.UseAuthorization();
 

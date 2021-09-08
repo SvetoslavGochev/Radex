@@ -32,13 +32,18 @@
         public virtual DbSet<Category> Categories { get; set; }
 
         public virtual DbSet<Product> Products { get; init; }
+
         public virtual DbSet<Candidate> Candidates { get; init; }
+        public virtual DbSet<Recruiter> Recruiters { get; init; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Candidate>()
+                .HasOne<Recruiter>(r => r.Recruiter)
+                .WithOne(s => s.Candidate)
+                .OnDelete(DeleteBehavior.Restrict);
 
-
-        //    base.OnModelCreating(modelBuilder);
-        //}
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
