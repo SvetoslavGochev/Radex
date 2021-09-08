@@ -25,5 +25,9 @@
         [Required]
         public string BirthDate { get; set; }
 
+        public int[] Skils = new int[] {}
+
+        public Recruiter Recruiter { get; set; }
+
     }
 }
