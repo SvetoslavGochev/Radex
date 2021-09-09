@@ -26,7 +26,7 @@
         [Required]
         public string BirthDate { get; set; }
 
-        public virtual Recruiter Recruiter { get; set; }
+        public Recruiter Recruiter { get; set; }
 
     }
 }

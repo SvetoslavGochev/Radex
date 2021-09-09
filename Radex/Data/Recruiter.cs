@@ -9,6 +9,7 @@
 
     public class Recruiter
     {
+
         public int Id { get; init; }
 
         [Required]
@@ -22,8 +23,5 @@
         public string Country { get; init; }
 
         
-        public int? CandidateId { get; set; }
-        public virtual Candidate Candidate { get; set; }
-
     }
 }

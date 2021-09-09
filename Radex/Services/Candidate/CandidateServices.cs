@@ -46,6 +46,14 @@
 
         public async Task PostCandidate(Candidate candidate)
         {
+            //var recruiter = new Recruiter
+            //{
+            //    Country = "Bg",
+            //    Email = "bg@abv.bg",
+            //    LastName = "Reqruiter",
+            //};
+            //candidate.Recruiter = recruiter;
+
             await this.db.Candidates
                 .AddAsync(candidate);
 

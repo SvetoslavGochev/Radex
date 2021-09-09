@@ -24,7 +24,12 @@
         {
             await this.css.PostCandidate(candidate);
 
-            return this.CreatedAtAction("Get", new { id = candidate.Id, recruiter = candidate.Recruiter }, candidate);
+            return this.CreatedAtAction("Get",
+                new 
+                {
+                    id = candidate.Id
+                },
+                candidate);
         }
 
         [HttpGet]

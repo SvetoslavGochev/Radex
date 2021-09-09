@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Radex.Data;
 
 namespace Radex.Migrations
 {
     [DbContext(typeof(Db))]
-    partial class DbModelSnapshot : ModelSnapshot
+    [Migration("20210909104241_canditrecr")]
+    partial class canditrecr
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,7 +43,7 @@ namespace Radex.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RecruiterId")
+                    b.Property<int?>("RecruiterId")
                         .HasColumnType("int");
 
                     b.Property<string>("publicBio")
@@ -127,10 +129,8 @@ namespace Radex.Migrations
             modelBuilder.Entity("Radex.Data.Candidate", b =>
                 {
                     b.HasOne("Radex.Data.Recruiter", "Recruiter")
-                        .WithMany("Candidates")
-                        .HasForeignKey("RecruiterId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("RecruiterId");
 
                     b.Navigation("Recruiter");
                 });
@@ -147,11 +147,6 @@ namespace Radex.Migrations
             modelBuilder.Entity("Radex.Data.Category", b =>
                 {
                     b.Navigation("Categories");
-                });
-
-            modelBuilder.Entity("Radex.Data.Recruiter", b =>
-                {
-                    b.Navigation("Candidates");
                 });
 #pragma warning restore 612, 618
         }
