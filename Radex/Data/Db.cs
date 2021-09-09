@@ -35,17 +35,11 @@
 
         public virtual DbSet<Candidate> Candidates { get; init; }
         public virtual DbSet<Recruiter> Recruiters { get; init; }
+        public virtual DbSet<Skills> Skills { get; init; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Candidate>()
-        //        .HasOne(x => x.Recruiter)
-        //        .WithMany(x => x.Candidates)
-        //        .HasForeignKey(x => x.RecruiterId)
-        //        .OnDelete(DeleteBehavior.Restrict);
-
-
-        //    base.OnModelCreating(modelBuilder);
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

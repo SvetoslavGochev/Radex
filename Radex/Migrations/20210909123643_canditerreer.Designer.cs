@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Radex.Data;
 
 namespace Radex.Migrations
 {
     [DbContext(typeof(Db))]
-    partial class DbModelSnapshot : ModelSnapshot
+    [Migration("20210909123643_canditerreer")]
+    partial class canditerreer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -124,7 +126,7 @@ namespace Radex.Migrations
                     b.ToTable("Recruiters");
                 });
 
-            modelBuilder.Entity("Radex.Data.Skills", b =>
+            modelBuilder.Entity("Radex.Data.Skils", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -141,7 +143,7 @@ namespace Radex.Migrations
 
                     b.HasIndex("CandidateId");
 
-                    b.ToTable("Skills");
+                    b.ToTable("Skils");
                 });
 
             modelBuilder.Entity("Radex.Data.Candidate", b =>
@@ -162,10 +164,10 @@ namespace Radex.Migrations
                     b.Navigation("ParentCategory");
                 });
 
-            modelBuilder.Entity("Radex.Data.Skills", b =>
+            modelBuilder.Entity("Radex.Data.Skils", b =>
                 {
                     b.HasOne("Radex.Data.Candidate", "Candidate")
-                        .WithMany("Skills")
+                        .WithMany("Skils")
                         .HasForeignKey("CandidateId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -175,7 +177,7 @@ namespace Radex.Migrations
 
             modelBuilder.Entity("Radex.Data.Candidate", b =>
                 {
-                    b.Navigation("Skills");
+                    b.Navigation("Skils");
                 });
 
             modelBuilder.Entity("Radex.Data.Category", b =>

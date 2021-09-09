@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Radex.Data;
 
 namespace Radex.Migrations
 {
     [DbContext(typeof(Db))]
-    partial class DbModelSnapshot : ModelSnapshot
+    [Migration("20210909125117_canditerreerer")]
+    partial class canditerreerer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -141,7 +143,7 @@ namespace Radex.Migrations
 
                     b.HasIndex("CandidateId");
 
-                    b.ToTable("Skills");
+                    b.ToTable("Skils");
                 });
 
             modelBuilder.Entity("Radex.Data.Candidate", b =>

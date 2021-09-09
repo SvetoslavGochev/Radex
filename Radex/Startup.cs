@@ -30,6 +30,7 @@ namespace Radex
             services.AddControllersWithViews()
                 .AddXmlSerializerFormatters();
 
+
             services.AddCors();// 4rez nego kazvame na brauzara koi moje da pravi zaqvki kam na6eto api
             services.AddDbContext<Db>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<ICandidateServices, CandidateServices>();
