@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Builder;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
+    using Radex.Data;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -23,8 +24,10 @@
 
         private static void MigrateDatabase(IServiceProvider services)
         {
-            var data = services.GetRequiredService<Data.Db>();
+            var data = services.GetRequiredService<Db>();
             data.Database.Migrate();
         }
+
+       
     }
 }

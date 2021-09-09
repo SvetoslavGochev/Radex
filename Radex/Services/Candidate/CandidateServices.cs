@@ -19,15 +19,26 @@
             this.db = db;
         }
 
+        public async Task DeleteCandidate(Candidate candidateForDelete)
+        {
+
+            this.db
+                .Remove(candidateForDelete);
+
+            await this.db
+                .SaveChangesAsync();
+        }
+
         public IEnumerable<Candidate> GetAll()
         {
-            return db.Candidates.ToList();
+            return db.Candidates
+                .ToList();
         }
 
         public Candidate GetCandidate(int id)
         {
-
-            var candidate = this.db.Candidates
+            var candidate = this.db
+                .Candidates
                 .Find(id);
 
             return candidate;
@@ -35,8 +46,22 @@
 
         public async Task PostCandidate(Candidate candidate)
         {
-            await this.db.Candidates.AddAsync(candidate);
-            await this.db.SaveChangesAsync();
+            await this.db.Candidates
+                .AddAsync(candidate);
+
+            await this.db
+                .SaveChangesAsync();
+        }
+
+        public async Task PutCandidate(Candidate candidate)
+        {
+            this.db.Entry(candidate)
+                .State = EntityState.Modified;
+            //!!!!!!!!!! imame id i danni
+            //nameri razlikite i kato ti kaja savechanges gi zapazi
+            //spestqvame mapvane na proparitia
+            await this.db
+                .SaveChangesAsync();
         }
     }
 }

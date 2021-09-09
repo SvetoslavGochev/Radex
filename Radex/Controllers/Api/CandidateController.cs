@@ -31,7 +31,6 @@
         public IEnumerable<Candidate> Get()
         {
             return this.css.GetAll();
-
         }
 
         [HttpGet("{id}")]
@@ -39,44 +38,39 @@
         {
             var candidate = this.css.GetCandidate(id);
 
+            CandidateExist(candidate);
+            return candidate;
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> Put(Candidate candidate)
+        {
+            await css.PutCandidate(candidate);
+
+            return this.NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var candidateForDeleteId = css.GetCandidate(id);
+
+            CandidateExist(candidateForDeleteId);
+
+            await css.DeleteCandidate(candidateForDeleteId);
+
+            return this.NoContent();
+        }
+
+        public  ActionResult<Candidate> CandidateExist(Candidate candidate)
+        {
             if (candidate == null)
             {
-                return this.NotFound();
+                this.NotFound();
             }
 
             return candidate;
-
         }
-
-        //[HttpPut]
-        //public async Task<ActionResult> Put(Candidate candidate)
-        //{
-        //    this.db.Entry(candidate).State = EntityState.Modified;
-        //    //!!!!!!!!!! imame id i danni
-        //    //nameri razlikite i kato ti kaja savechanges gi zapazi
-        //    //spestqvame mapvane na proparitia
-        //    await this.db.SaveChangesAsync();
-
-        //    return this.NoContent();
-        //}
-
-        //[HttpDelete("{id}")]
-        //public async Task<ActionResult> Delete(int id)
-        //{
-        //    var candidateForDelete = this.db
-        //        .Candidates
-        //        .Find(id);
-
-        //    if (candidateForDelete == null)
-        //    {
-        //        return this.NotFound();
-        //    }
-
-        //    this.db.Remove(candidateForDelete);
-
-        //    await this.db.SaveChangesAsync();
-
-        //    return this.NoContent();
-        //}
     }
+
 }

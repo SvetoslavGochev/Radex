@@ -15,7 +15,9 @@
 
         IEnumerable<Candidate> GetAll();
 
-        //void PutCandidate(Candidate candidate);
+        Task PutCandidate(Candidate candidate);
 
+        Task DeleteCandidate(Candidate candidate);
+       
     }
 }
