@@ -73,7 +73,8 @@
             if (candidateExist != null)
             {
                 await css.DeleteCandidate(candidateForDeleteId);
-
+               //css.DeleteCandidate(candidateForDeleteId).GetAwaiter().GetResult(); ;
+               //ne6to podobno e ako ne i sashtoto 2.09h niki asp introducshon
                 return this.NoContent();
             }
 
