@@ -7,7 +7,7 @@
     using System.Text.Json.Serialization;
     using System.Threading.Tasks;
 
-    public class SkillResponseModels
+    public class SkillApiModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

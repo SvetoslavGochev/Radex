@@ -20,6 +20,12 @@
             this.css = css;
         }
 
+        [HttpGet]
+        public IEnumerable<CandidateApiModel> Get()
+        {
+            return this.css.GetAll();
+        }
+
         [HttpPost]
         public async Task<ActionResult> Post(Candidate candidate)
         {
@@ -33,11 +39,6 @@
                 candidate);
         }
 
-        [HttpGet]
-        public IEnumerable<CandidateApiModel> Get()
-        {
-            return this.css.GetAll();
-        }
 
         [HttpGet("{id}")]
         public ActionResult<Candidate> Get(int id)

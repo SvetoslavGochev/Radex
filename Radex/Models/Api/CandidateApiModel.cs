@@ -11,7 +11,7 @@
     {
         public CandidateApiModel()
         {
-            this.Skills = new HashSet<Skills>();
+            this.Skills = new HashSet<SkillApiModel>();
         }
         public int Id { get; set; }
 
@@ -25,9 +25,10 @@
 
         public string BirthDate { get; set; }
 
-        public ICollection<Skills> Skills { get; set; }
+        public ICollection<SkillApiModel> Skills { get; set; }
 
         public int RecruiterId { get; set; }
-        public Recruiter Recruiter { get; set; }
+
+        public RecruiterApiModel Recruiter { get; set; }
     }
 }

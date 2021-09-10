@@ -16,6 +16,12 @@
             this.CreateMap<CandidateApiModel, Candidate>()
                 .ReverseMap();
 
+            this.CreateMap<RecruiterApiModel, Recruiter>()
+                .ReverseMap();
+
+            this.CreateMap<SkillApiModel, Skills>()
+                .ReverseMap();
+
             //this.CreateMap<Candidate, CandidateApiModel>()
             //.ForMember(x => x.RecruiterId, cfg => cfg.MapFrom(c => c.Id));
 

@@ -24,6 +24,13 @@
             this.db = db;
             this.mapper = mapper;
         }
+        public IEnumerable<CandidateApiModel> GetAll()
+        {
+
+            return this.db.Candidates
+                .ProjectTo<CandidateApiModel>(this.mapper.ConfigurationProvider)
+                .ToList();
+        }
 
         public async Task DeleteCandidate(Candidate candidate)
         {
@@ -35,29 +42,6 @@
                 .SaveChangesAsync();
         }
 
-        public IEnumerable<CandidateApiModel> GetAll()
-        {
-            //var b = this.db.Candidates
-            //    .Select(c => new CandidateApiModel
-            //    {
-            //        Id = c.RecruiterId,
-            //        FirstName = c.FirstName,
-            //        LastName = c.LastName,
-            //        Email = c.Email,
-            //        publicBio = c.publicBio,
-            //        BirthDate = c.BirthDate,
-            //        Skills = c.Skills,
-
-            //    })
-            //    .ToList();
-
-            return this.db.Candidates
-                .ProjectTo<CandidateApiModel>(this.mapper.ConfigurationProvider)
-                .ToList();
-           
-
-            
-        }
 
         public Candidate GetCandidate(int id)
         {
