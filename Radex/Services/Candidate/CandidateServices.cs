@@ -31,29 +31,37 @@
                 .ProjectTo<CandidateApiModel>(this.mapper.ConfigurationProvider)
                 .ToList();
         }
-
-        public async Task DeleteCandidate(Candidate candidate)
+        public CandidateApiModel GetCandidate(int id)
         {
+            var candidateForm = this.db
+                .Candidates
+                .AsNoTracking()
+                .Where(x => x.Id == id)
+                .FirstOrDefault();
+
+           var candidate = this.mapper.Map<CandidateApiModel>(candidateForm);
+
+            return candidate;
+        }
+
+        public async Task DeleteCandidate(CandidateApiModel candidate)
+        {
+           var deleteForm = this.mapper.Map<Candidate>(candidate);
+
+           
 
             this.db
-                .Remove(candidate);
+                .Remove(deleteForm);
 
             await this.db
                 .SaveChangesAsync();
         }
 
 
-        public Candidate GetCandidate(int id)
-        {
-            var candidate = this.db
-                .Candidates
-                .Find(id);
-
-            return candidate;
-        }
 
         public async Task PostCandidate(Candidate candidate)
         {
+
 
             await this.db.Candidates
                 .AddAsync(candidate);
@@ -62,7 +70,7 @@
                 .SaveChangesAsync();
         }
 
-        public async Task PutCandidate(Candidate candidate)
+        public async Task PutCandidate(CandidateApiModel candidate)
         {
             this.db.Entry(candidate)
                 .State = EntityState.Modified;

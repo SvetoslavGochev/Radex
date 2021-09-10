@@ -10,15 +10,15 @@
 
     public interface ICandidateServices
     {
-        Candidate GetCandidate(int id);
+        CandidateApiModel GetCandidate(int id);
 
          Task PostCandidate(Candidate candidate);
 
         IEnumerable<CandidateApiModel> GetAll();
 
-        Task PutCandidate(Candidate candidate);
+        Task PutCandidate(CandidateApiModel candidate);
 
-        Task DeleteCandidate(Candidate candidate);
+        Task DeleteCandidate(CandidateApiModel candidate);
        
     }
 }

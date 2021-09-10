@@ -41,7 +41,7 @@
 
 
         [HttpGet("{id}")]
-        public ActionResult<Candidate> Get(int id)
+        public ActionResult<CandidateApiModel> Get(int id)
         {
             var candidate = this.css.GetCandidate(id);
 
@@ -50,7 +50,7 @@
         }
 
         [HttpPut]
-        public async Task<ActionResult> Put(Candidate candidate)
+        public async Task<ActionResult> Put(CandidateApiModel candidate)
         {
             await css.PutCandidate(candidate);
 
@@ -60,20 +60,20 @@
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var candidateForDeleteId = css.GetCandidate(id);
+            var candidateForDeleteId = css.GetCandidate(id); 
 
             CandidateExist(candidateForDeleteId);
-
+           
             await css.DeleteCandidate(candidateForDeleteId);
 
             return this.NoContent();
         }
 
-        public  ActionResult<Candidate> CandidateExist(Candidate candidate)
+        public  ActionResult<CandidateApiModel> CandidateExist(CandidateApiModel candidate)
         {
             if (candidate == null)
             {
-                this.NotFound();
+               return this.NotFound();
             }
 
             return candidate;
