@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using Radex.Data;
+    using Radex.Models.Api;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -13,7 +14,7 @@
 
          Task PostCandidate(Candidate candidate);
 
-        IEnumerable<Candidate> GetAll();
+        IEnumerable<CandidateApiModel> GetAll();
 
         Task PutCandidate(Candidate candidate);
 

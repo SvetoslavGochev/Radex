@@ -33,8 +33,8 @@
 
         public ICollection<Skills> Skills { get; set; }
 
-        [JsonIgnore]
-        public Recruiter Recruiter { get; set; }
+        public int RecruiterId { get; set; }
+        public Recruiter Recruiter { get; set; } 
 
     }
 }

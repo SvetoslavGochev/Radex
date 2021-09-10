@@ -9,30 +9,54 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using Radex.Models.Api;
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
 
     public class CandidateServices : ICandidateServices
     {
         private readonly Db db;
+        private readonly IMapper mapper;
 
-        public CandidateServices(Db db)
+
+        public CandidateServices(Db db, IMapper mapper = null)
         {
             this.db = db;
+            this.mapper = mapper;
         }
 
-        public async Task DeleteCandidate(Candidate candidateForDelete)
+        public async Task DeleteCandidate(Candidate candidate)
         {
 
             this.db
-                .Remove(candidateForDelete);
+                .Remove(candidate);
 
             await this.db
                 .SaveChangesAsync();
         }
 
-        public IEnumerable<Candidate> GetAll()
+        public IEnumerable<CandidateApiModel> GetAll()
         {
-            return db.Candidates
+            //var b = this.db.Candidates
+            //    .Select(c => new CandidateApiModel
+            //    {
+            //        Id = c.RecruiterId,
+            //        FirstName = c.FirstName,
+            //        LastName = c.LastName,
+            //        Email = c.Email,
+            //        publicBio = c.publicBio,
+            //        BirthDate = c.BirthDate,
+            //        Skills = c.Skills,
+
+            //    })
+            //    .ToList();
+
+            return this.db.Candidates
+                .ProjectTo<CandidateApiModel>(this.mapper.ConfigurationProvider)
                 .ToList();
+           
+
+            
         }
 
         public Candidate GetCandidate(int id)
@@ -46,13 +70,6 @@
 
         public async Task PostCandidate(Candidate candidate)
         {
-            //var recruiter = new Recruiter
-            //{
-            //    Country = "Bg",
-            //    Email = "bg@abv.bg",
-            //    LastName = "Reqruiter",
-            //};
-            //candidate.Recruiter = recruiter;
 
             await this.db.Candidates
                 .AddAsync(candidate);

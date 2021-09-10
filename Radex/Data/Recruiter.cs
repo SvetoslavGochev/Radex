@@ -9,6 +9,10 @@
 
     public class Recruiter
     {
+        public Recruiter()
+        {
+            this.Candidates = new HashSet<Candidate>();
+        }
 
         public int Id { get; init; }
 
@@ -22,6 +26,6 @@
         [Required]
         public string Country { get; init; }
 
-        
+        public ICollection<Candidate> Candidates { get; set; }
     }
 }

@@ -39,6 +39,12 @@
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Candidate>()
+                .HasOne(x => x.Recruiter)
+                .WithMany(x => x.Candidates)
+                .HasForeignKey(x => x.RecruiterId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             base.OnModelCreating(modelBuilder);
         }
     }

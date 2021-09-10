@@ -14,6 +14,7 @@ namespace Radex
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using AutoMapper;
 
     public class Startup
     {
@@ -29,10 +30,15 @@ namespace Radex
         {
             services.AddControllersWithViews()
                 .AddXmlSerializerFormatters();
-
+            
 
             services.AddCors();// 4rez nego kazvame na brauzara koi moje da pravi zaqvki kam na6eto api
             services.AddDbContext<Db>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddAutoMapper(typeof(Startup));
+            //pravise kadeto spravim novi obekti i ne sme v select zaqvka
+            //ako ima select zaqvka polzvame ProjectTo<>
+
             services.AddTransient<ICandidateServices, CandidateServices>();
         }
 

@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Radex.Data;
+    using Radex.Models.Api;
     using Radex.Services.Candidate;
     using System;
     using System.Collections.Generic;
@@ -33,7 +34,7 @@
         }
 
         [HttpGet]
-        public IEnumerable<Candidate> Get()
+        public IEnumerable<CandidateApiModel> Get()
         {
             return this.css.GetAll();
         }
