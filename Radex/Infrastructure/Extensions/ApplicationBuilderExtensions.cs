@@ -1,9 +1,11 @@
 ﻿namespace Radex.Infrastructure.Extensions
 {
     using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
     using Radex.Data;
+    using Radex.Models.Api;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -21,6 +23,7 @@
 
             return app;
         }
+
 
         private static void MigrateDatabase(IServiceProvider services)
         {

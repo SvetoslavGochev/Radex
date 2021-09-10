@@ -38,17 +38,16 @@
                 .AsNoTracking()
                 .Where(x => x.Id == id)
                 .FirstOrDefault();
+            //check candidate form
 
-           var candidate = this.mapper.Map<CandidateApiModel>(candidateForm);
+                var candidate = this.mapper.Map<CandidateApiModel>(candidateForm);
 
-            return candidate;
+                return candidate;
         }
 
         public async Task DeleteCandidate(CandidateApiModel candidate)
         {
-           var deleteForm = this.mapper.Map<Candidate>(candidate);
-
-           
+            var deleteForm = this.mapper.Map<Candidate>(candidate);
 
             this.db
                 .Remove(deleteForm);
@@ -61,8 +60,6 @@
 
         public async Task PostCandidate(Candidate candidate)
         {
-
-
             await this.db.Candidates
                 .AddAsync(candidate);
 

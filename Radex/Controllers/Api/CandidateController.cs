@@ -32,7 +32,7 @@
             await this.css.PostCandidate(candidate);
 
             return this.CreatedAtAction("Get",
-                new 
+                new
                 {
                     id = candidate.Id
                 },
@@ -45,7 +45,12 @@
         {
             var candidate = this.css.GetCandidate(id);
 
-            CandidateExist(candidate);
+
+            if (CandidateExist(candidate) == null)
+            {
+                return NotFound();
+            }
+
             return candidate;
         }
 
@@ -60,20 +65,34 @@
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var candidateForDeleteId = css.GetCandidate(id); 
+            var candidateForDeleteId = css.GetCandidate(id);
 
-            CandidateExist(candidateForDeleteId);
-           
-            await css.DeleteCandidate(candidateForDeleteId);
 
-            return this.NoContent();
+            if (CandidateExist(candidateForDeleteId) != null)
+            {
+                await css.DeleteCandidate(candidateForDeleteId);
+
+                return this.NoContent();
+            }
+
+            return NotFound();
         }
 
-        public  ActionResult<CandidateApiModel> CandidateExist(CandidateApiModel candidate)
+        public ActionResult<CandidateApiModel> CandidateExist(CandidateApiModel candidate)
         {
             if (candidate == null)
             {
-               return this.NotFound();
+                return null;
+            }
+
+            return candidate;
+        }
+
+        public ActionResult<CandidateApiModel> CandidateIsNull(CandidateApiModel candidate)
+        {
+            if (candidate == null)
+            {
+                return this.NotFound();
             }
 
             return candidate;
