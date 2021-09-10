@@ -45,13 +45,14 @@
         {
             var candidate = this.css.GetCandidate(id);
 
+            var candidateExist = CandidateExist(candidate);
 
-            if (CandidateExist(candidate) == null)
+            if (candidateExist != null)
             {
-                return NotFound();
+                return candidate;
             }
 
-            return candidate;
+            return NotFound();
         }
 
         [HttpPut]
@@ -67,8 +68,9 @@
         {
             var candidateForDeleteId = css.GetCandidate(id);
 
+            var candidateExist = CandidateExist(candidateForDeleteId);
 
-            if (CandidateExist(candidateForDeleteId) != null)
+            if (candidateExist != null)
             {
                 await css.DeleteCandidate(candidateForDeleteId);
 
