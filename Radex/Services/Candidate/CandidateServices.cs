@@ -35,8 +35,9 @@
         {
             var candidateForm = this.db
                 .Candidates
-                .AsNoTracking()
                 .Where(x => x.Id == id)
+                .ProjectTo<CandidateApiModel>(this.mapper.ConfigurationProvider)
+                .AsNoTracking()
                 .FirstOrDefault();
             //check candidate form
 

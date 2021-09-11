@@ -15,6 +15,8 @@ namespace Radex
     using System.Linq;
     using System.Threading.Tasks;
     using AutoMapper;
+    using Radex.Services.Recruiter;
+    using Radex.Services.Skills;
 
     public class Startup
     {
@@ -40,6 +42,8 @@ namespace Radex
             //ako ima select zaqvka polzvame ProjectTo<>
 
             services.AddTransient<ICandidateServices, CandidateServices>();
+            services.AddTransient<IRecruiterServices, RecruiterServices>();
+            services.AddTransient<ISkillsServices, SkillsServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

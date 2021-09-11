@@ -10,7 +10,7 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    [Route("api/[controller]")]
+    [Route("candidate")]
     [ApiController]
     public class CandidateController : ControllerBase
     {
