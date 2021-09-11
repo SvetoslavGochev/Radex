@@ -4,6 +4,7 @@
     using Radex.Models.Api;
     using Radex.Services.Skills;
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -20,7 +21,7 @@
         }
 
         [HttpGet("{Id}")]
-        public IEnumerable<SkillApiModel> Get(int Id)
+        public IEnumerable Get(int Id)
         {
             return this.skillsServices.GetSkills(Id);
         }
