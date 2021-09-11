@@ -8,6 +8,7 @@
     public class TestModel
     {
         public string Name { get; set; }
+        public string Cookie { get; set; }
 
     }
 }

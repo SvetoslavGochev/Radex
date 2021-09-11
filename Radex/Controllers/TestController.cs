@@ -11,14 +11,20 @@
     {
         [HttpGet]
         [HttpPost]
-        public IActionResult GetName(string name)
+        public IActionResult GetName(string name, [FromHeader]string cookie)
         {
             var view = new TestModel();
             view.Name = name;
+            view.Cookie = cookie;
 
             return this.View(view);
         }
 
+        [NonAction]//ne moje da bade dostapen ot vyn http/Test/GetId no az si go polzvam
+        public void GetId()
+        {
+
+        }
 
     }
 }
