@@ -34,6 +34,7 @@
         public ICollection<Skills> Skills { get; set; }
 
         public int RecruiterId { get; set; }
+        //imame control varhu nego int? za da sazdadem candidat bez recruiter
         public Recruiter Recruiter { get; set; } 
 
     }

@@ -34,7 +34,7 @@
               .FirstOrDefault();
 
             var candidateSkills = candidate.Skills
-                .Select(x => x.Name)
+                .Select(x => x?.Name)
                 .ToList();
 
             return candidateSkills;
