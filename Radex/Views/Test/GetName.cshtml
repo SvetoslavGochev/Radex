@@ -1,0 +1,25 @@
+﻿@model TestModel
+
+<h1>Hey name: @Model.Name</h1>
+
+<form>
+    <input name="name" />
+    <input type="submit" />
+    @*//tuka podava dannite v queri stringa ?name=ss*@
+</form>
+
+<form method="post">
+    @*podava dannite v bodito na zaqvkata*@
+    <input name="name" />
+    <input type="submit" />
+</form>
+
+<button onclick="Token()" class="btn btn-success">Take verif.Token</button>
+avtomati4no securiti koeto  asp ni ijectva v vsqka formi4ka avtomati4no
+<script>
+    function Token() {
+        let vt = '@Html.AntiForgeryToken()';
+        console.log(vt);
+    }
+
+</script>
