@@ -11,11 +11,18 @@
     {
         [HttpGet]
         [HttpPost]
-        public IActionResult GetName(string name, [FromHeader]string cookie)
+        [RequireHttps]
+        //controler/action/id?
+        public IActionResult GetName(int year, int mont, int day,int id,string name, [FromHeader]string cookie)
         {
+
+            this.ViewBag.test = 1;
+            this.ViewData["test"] = 123;
             var view = new TestModel();
             view.Name = name;
             view.Cookie = cookie;
+            view.Id = id.ToString();//trtiq parametyr //controler/action/id?
+            view.Date = $"{year}/{mont}///////////';////////////////////////////////////////////////////{day}";
 
             return this.View(view);
         }

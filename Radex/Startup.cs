@@ -81,6 +81,14 @@ namespace Radex
 
             app.UseEndpoints(endpoints =>
             {
+                //myRoute
+                endpoints.MapControllerRoute(
+                    "gg", "Blog/{year}/{month}/{day}",
+                    new { controller = "Test", action = "GetName" },
+                    new { year = @"[0-9]{4}"}//google haresva tova indeksira gi dobre
+
+                    );
+                ///adresa trqbva da zapo4va s Blog/2020/10/27 i da se vkarat parametrite v controlera int date int mesec int day
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
