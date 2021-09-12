@@ -24,3 +24,13 @@ namespace Radex
                 });
     }
 }
+//with .Select => anonim type
+//1(+) naav propart acess in lamba expre
+//2.(+) get only the columns we need
+//3.(-) no update, delet
+
+//without .Select() => orig entity
+//1. (i) No acess to nav propart(?) => polzvame Include() lazi loadinfg
+//2.Get All Columns for entity
+//3. (+) update/delete entity/ SaveChanges
+

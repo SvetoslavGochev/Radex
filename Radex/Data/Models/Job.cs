@@ -10,9 +10,10 @@
         public int Id { get; set; }
         public string title { get; set; }
         public string description { get; set; }
-        public double salary { get; set; }
+        public decimal salary { get; set; }
         public List<Skills> skills { get; set; }
 
+        //public int interviewId { get; set; }
         public Interview interview { get; set; }
     }
 }
