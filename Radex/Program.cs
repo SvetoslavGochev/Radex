@@ -24,6 +24,11 @@ namespace Radex
                 });
     }
 }
+//kato ima select nqma traking detach asnotraking
+
+//drug variant db.Entry(song).State = EntityState.Detached; 
+//drug variant db.Entry(song).State = EntityState.Modifie;  pak da se vkl
+ 
 //with .Select => anonim type
 //1(+) naav propart acess in lamba expre
 //2.(+) get only the columns we need

@@ -35,9 +35,9 @@
         {
             var candidateForm = this.db
                 .Candidates
-                .Where(x => x.Id == id)
+                .Where(x => x.Id == id)//imali filtar sql gi trackva
                 .ProjectTo<CandidateApiModel>(this.mapper.ConfigurationProvider)
-                .AsNoTracking()
+                .AsNoTracking()//po dobyr perfomance
                 .FirstOrDefault();
             //check candidate form
 

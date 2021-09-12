@@ -17,6 +17,7 @@ namespace Radex
     using AutoMapper;
     using Radex.Services.Recruiter;
     using Radex.Services.Skills;
+    using System.Text.Json.Serialization;
 
     public class Startup
     {
@@ -40,6 +41,9 @@ namespace Radex
             services.AddAutoMapper(typeof(Startup));
             //pravise kadeto spravim novi obekti i ne sme v select zaqvka
             //ako ima select zaqvka polzvame ProjectTo<>
+
+            services.AddControllers().AddJsonOptions(x =>
+   x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
             services.AddTransient<ICandidateServices, CandidateServices>();
             services.AddTransient<IRecruiterServices, RecruiterServices>();
