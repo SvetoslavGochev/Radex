@@ -44,6 +44,7 @@ namespace Radex
 
             services.AddControllers().AddJsonOptions(x =>
    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+            //bugs cikle
 
             services.AddTransient<ICandidateServices, CandidateServices>();
             services.AddTransient<IRecruiterServices, RecruiterServices>();
