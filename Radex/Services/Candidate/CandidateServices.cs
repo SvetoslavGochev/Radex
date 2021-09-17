@@ -40,6 +40,12 @@
                 .AsNoTracking()//po dobyr perfomance
                 .FirstOrDefault();
             //check candidate form
+            var bcandidate = this.db
+                .Candidates
+                 .Where(x => x.Id == id)
+                 .Select(x => x.Skills.Any(x => x.Name == "C#"))
+                 .FirstOrDefault();
+
 
                 var candidate = this.mapper.Map<CandidateApiModel>(candidateForm);
 
