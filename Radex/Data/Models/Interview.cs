@@ -15,5 +15,7 @@ namespace Radex.Data.Models
         public Candidate candidate { get; set; }
 
         //public IEnumerable<Job> Jobs { get; set; }
+
+        //comentaer
     }
 }
