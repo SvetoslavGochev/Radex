@@ -18,7 +18,7 @@ namespace Radex.Services.Jobs
         {
             var candidate = this.db.Candidates
                 .Where(x => x.Skills
-                .Select(x => x.Name == job))
+                .Select(x => x.Name == job));
         }
     }
 }
