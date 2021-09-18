@@ -45,6 +45,12 @@
                 .HasForeignKey(x => x.RecruiterId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            //modelBuilder.Entity<Candidate>()
+            //    .HasOne<Recruiter>()
+            //    .WithOne()
+            //    .OnDelete(DeleteBehavior.Restrict);
+            //one to one 
+
             base.OnModelCreating(modelBuilder);
         }
     }

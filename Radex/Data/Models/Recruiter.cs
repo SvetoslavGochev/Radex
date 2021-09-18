@@ -26,6 +26,10 @@
         [Required]
         public string Country { get; init; }
 
+        //[Required]
+        //public int CandidateId { get; set; }
+
+        //if want one to one 
         public ICollection<Candidate> Candidates { get; set; }
     }
 }
