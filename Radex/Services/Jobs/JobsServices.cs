@@ -16,10 +16,12 @@ namespace Radex.Services.Jobs
 
         public IEnumerable<CandidateApiModel> GetCandidate(string job)
         {
-            var candidate = this.db.Candidates
-                .Select(x => x.Skills.Any(x => x))
-                .Where(x => x.)
-                .ToList()
+            //var candidate = this.db.Candidates
+            //    .Select(x => x.Skills.Any(x => x))
+            //    .Where(x => x.i)
+            //    .ToList();
+            return null;
+                 
                 
         }
     }
